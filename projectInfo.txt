@@ -1,0 +1,21 @@
+https://v0.dev/chat/sidebar-toggle-layout-0TWobdhesBw [DONE]
+https://kzmofmpbolnrlr9lyero.lite.vusercontent.net/
+- audio
+- responsive
+- JS
+- JSON lists
+
+Thinking in react [DONE]
+useEffect [DONE]
+
+Set favorite when click on Album [DONE]
+Use Local storage to store and fetch data [DONE]
+
+Add searchbutton beside Header [DONE]
+- should open a panel containing search bar + close button
+- when we type, suggesstion(s) should appear (contains the words)
+- when we click on one item, the search should close and the video should play
+
+Add autoplay when clicking on album or entering name in search bar
+Read useRef
+Read Keys

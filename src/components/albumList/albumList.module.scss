@@ -1,0 +1,11 @@
+.albumList_container{
+    padding: 10px;
+
+    .album_wrapper {
+        margin-bottom: 15px;
+    }
+
+    .album_wrapper:last-child{
+        margin-bottom: unset;
+    }
+}

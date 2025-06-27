@@ -1,0 +1,56 @@
+.album_container {
+    border: 1px solid grey;
+    
+    .album__details {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 10px;
+
+
+        img {
+            margin-right: 15px;
+            background-color: grey;
+            border-radius: 6px;
+            width: 50px;
+            padding: 10px;
+        }
+
+        .album_name {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+
+            h3 {
+                margin: 0;
+                margin-bottom: 5px;
+                font-size: 18px;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    .album__action {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 6px;
+        padding-bottom: 5px;
+
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+
+        .plus{
+            margin-left: 10px;
+        }
+    }
+
+    .favorite {
+        fill: green;
+    }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.pinimg.com/736x/1b/c7/79/1bc779a04bb67b31e3c0c5ac70ebe4ef.jpg",
+    "title": "Surah Al-Fatiha",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/001.mp3"
+  },
+  {
+    "id": 2,
+    "image": "https://content.jwplatform.com/thumbs/9bocdLvQ-720.jpg",
+    "title": "Surah Al-Baqarah",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/002.mp3"
+  },
+  {
+    "id": 3,
+    "image": "https://www.whyislam.org/wp-content/uploads/2019/09/Copy-of-the-Quran-open.jpg",
+    "title": "Surah Yaseen",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/036.mp3"
+  },
+  {
+    "id": 4,
+    "image": "https://www.hadiyahgifting.com/cdn/shop/files/IMG_0695_f56a7e8b-e4b3-412f-88fa-870f178db863.jpg",
+    "title": "Surah Ar-Rahman",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/055.mp3"
+  },
+  {
+    "id": 5,
+    "image": "https://www.quranicconnection.tv/wp-content/uploads/2019/02/UnderstandQuran.jpg",
+    "title": "Surah Al-Mulk",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/067.mp3"
+  },
+  {
+    "id": 6,
+    "image": "https://res.cloudinary.com/jerrick/image/upload/v1747729003/682c3a6bbf8621001d852314.jpg",
+    "title": "Surah Al-Kahf",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/018.mp3"
+  },
+  {
+    "id": 7,
+    "image": "https://img.freepik.com/premium-photo/quran-holy-book-muslims-around-world-put-wooden-boards_1195898-1091.jpg",
+    "title": "Surah Al-Ikhlas",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/112.mp3"
+  },
+  {
+    "id": 8,
+    "image": "https://t4.ftcdn.net/jpg/02/19/89/15/360_F_219891548_Y4Rnpis7r8XkWh0xS4pRjQcN4Hg9Wcqu.jpg",
+    "title": "Surah Al-Falaq",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/113.mp3"
+  },
+  {
+    "id": 9,
+    "image": "https://cdn-jdnjn.nitrocdn.com/oNDOAVXcOvDcQZWDXmVLiHOMKUUVuHIH/assets/images/optimized/rev-9b865fa/www.whyislam.org/wp-content/uploads/2019/09/Closeup-of-a-page-in-the-Holy-Quran.jpg",
+    "title": "Surah An-Nas",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/114.mp3"
+  },
+  {
+    "id": 10,
+    "image": "https://amaliah-media.imgix.net/wp-content/uploads/2022/04/the-dancing-rain-07p6_tBLUOw-unsplash-scaled.jpg",
+    "title": "Surah Maryam",
+    "subtitle": "Mishary Alafasi",
+    "audio": "https://server8.mp3quran.net/afs/019.mp3"
+  }
+]
