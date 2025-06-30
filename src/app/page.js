@@ -5,18 +5,20 @@ import Song from "@/components/song/song";
 import AlbumList from "@/components/albumList/albumList";
 import data from "@/data/albumList.json";
 import Search from "@/components/search/search";
+// import RecentlyPlayed from "@/components/recentlyPlayed/recentlyPlayed";
 import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState(true);
   const [song, setSong] = useState(data[0]);
-  const audioRef = useRef(null);
-  const [playAudio, setPlayAudio] = useState(false);
 
-  useEffect(() => {
-    //Printing Data on first render
-    console.log("data: ", data);
-  }, []);
+  const handlePlay = async (e) => {
+    try {
+      await e.target.play();
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
   function toggleSearch() {
     setSearch((prevSearch) => !prevSearch);
@@ -30,10 +32,10 @@ export default function Home() {
         toggleSearch={toggleSearch}
         lists={data}
         setSong={setSong}
-        setPlayAudio={setPlayAudio}
       />
-      <Song song={song} audioRef={audioRef} playAudio={playAudio} />
-      <AlbumList lists={data} setSong={setSong} setPlayAudio={setPlayAudio} />
+      <Song song={song} handlePlay={handlePlay} />
+      {/* <RecentlyPlayed /> */}
+      <AlbumList lists={data} setSong={setSong} />
     </>
   );
 }

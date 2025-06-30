@@ -2,13 +2,7 @@ import styles from "@/components/search/search.module.scss";
 import Result from "@/components/search/result";
 import { useEffect, useState } from "react";
 
-export default function Search({
-  search,
-  toggleSearch,
-  lists,
-  setSong,
-  setPlayAudio,
-}) {
+export default function Search({ search, toggleSearch, lists, setSong }) {
   const [text, setText] = useState("");
   const [results, setResults] = useState([]);
 
@@ -27,10 +21,6 @@ export default function Search({
   function getText(e) {
     setText(e.target.value);
   }
-
-  useEffect(() => {
-    console.log("Results: ", results);
-  }, [results]);
 
   return (
     <div
@@ -64,7 +54,6 @@ export default function Search({
             result={result}
             setSong={setSong}
             toggleSearch={toggleSearch}
-            setPlayAudio={setPlayAudio}
             setText={setText}
           />
         ))}

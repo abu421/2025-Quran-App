@@ -11,6 +11,10 @@
     top: 0;
     left: 0;
     backdrop-filter: blur(10px);
+    @media(min-width: 768px){
+        backdrop-filter: unset;
+        background-color: white;
+    }
 
     img{
         width: 35%;
@@ -23,14 +27,37 @@
         width: 100%;
         display: flex;
         align-items: flex-start;
+        position: relative;
+        @media(min-width: 768px){
+            // flex-direction: column;
+        }
+
+        img{
+            @media(min-width: 768px){
+                width: 40%;
+                margin-bottom: 15px;
+            }
+        }
+
+        .info{
+            @media(min-width: 768px){
+                margin-bottom: 15px;
+            }
+        }
 
         h3{
             margin: 10px 0 0;
             font-size: 20px;
+            @media(min-width: 768px){
+                font-size: 30px;
+            }
         }
 
         p{
             margin: 5px 0 0;
+            @media(min-width: 768px){
+                font-size: 28px;
+            }
         }
 
         .playtime{
@@ -75,5 +102,12 @@
         background-color: grey;
         width: 100%;
         // z-index: -1;
+
+        @media(min-width: 768px){
+            // position: absolute;
+            // top: 150px;
+            // right: 15px;
+            // width: 56%;
+        }
     }
 }

@@ -2,17 +2,8 @@ import styles from "@/components/album/album.module.scss";
 import { Heart, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function Album({
-  albumId,
-  list,
-  className,
-  setSong,
-  setPlayAudio,
-}) {
+export default function Album({ albumId, list, className, setSong }) {
   const [favorite, setFavorite] = useState(false);
-  useEffect(() => {
-    console.log("List: ", list);
-  }, []);
 
   useEffect(() => {
     const value = localStorage.getItem(albumId);
@@ -25,7 +16,6 @@ export default function Album({
 
   function changeSong() {
     setSong(list);
-    setPlayAudio(true);
   }
 
   function addFavorite() {
@@ -38,11 +28,8 @@ export default function Album({
   }
 
   return (
-    <div
-      className={`${styles.album_container} ${className}`}
-      onClick={changeSong}
-    >
-      <div className={styles.album__details}>
+    <div className={`${styles.album_container} ${className}`}>
+      <div className={styles.album__details} onClick={changeSong}>
         <img src={list.image} />
         <div className={styles.album_name}>
           <h3>{list.title}</h3>

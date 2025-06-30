@@ -6,13 +6,11 @@ export default function Result({
   result,
   setSong,
   toggleSearch,
-  setPlayAudio,
   setText,
 }) {
   function changeSong() {
     setSong(result);
     toggleSearch();
-    setPlayAudio(true);
     setText("");
   }
   return (
