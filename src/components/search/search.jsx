@@ -2,7 +2,13 @@ import styles from "@/components/search/search.module.scss";
 import Result from "@/components/search/result";
 import { useEffect, useState } from "react";
 
-export default function Search({ search, toggleSearch, lists, setSong }) {
+export default function Search({
+  search,
+  toggleSearch,
+  lists,
+  setSong,
+  setRecentlyPlayed,
+}) {
   const [text, setText] = useState("");
   const [results, setResults] = useState([]);
 
@@ -55,6 +61,7 @@ export default function Search({ search, toggleSearch, lists, setSong }) {
             setSong={setSong}
             toggleSearch={toggleSearch}
             setText={setText}
+            setRecentlyPlayed={setRecentlyPlayed}
           />
         ))}
     </div>

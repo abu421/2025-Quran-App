@@ -7,9 +7,11 @@ export default function Result({
   setSong,
   toggleSearch,
   setText,
+  setRecentlyPlayed,
 }) {
   function changeSong() {
     setSong(result);
+    setRecentlyPlayed({ id: result.id, title: result.title });
     toggleSearch();
     setText("");
   }

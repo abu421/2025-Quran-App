@@ -1,0 +1,33 @@
+.recentlyContainer{
+    padding: 10px;
+    background-color: #f1e9f8;
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3{
+            font-size: 20px;
+        }
+    }
+
+    .songs{
+        display: none;
+
+        .names{
+            border-bottom: 1px solid black;
+            padding-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .names:last-child{
+            margin-bottom: unset;
+            border-bottom: unset;
+        }
+    }
+
+    .show{
+        display: block;
+    }
+}

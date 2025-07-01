@@ -2,7 +2,13 @@ import styles from "@/components/album/album.module.scss";
 import { Heart, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function Album({ albumId, list, className, setSong }) {
+export default function Album({
+  albumId,
+  list,
+  className,
+  setSong,
+  setRecentlyPlayed,
+}) {
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
@@ -16,6 +22,7 @@ export default function Album({ albumId, list, className, setSong }) {
 
   function changeSong() {
     setSong(list);
+    setRecentlyPlayed({ id: list.id, title: list.title });
   }
 
   function addFavorite() {
