@@ -1,5 +1,4 @@
 import styles from "@/components/song/song.module.scss";
-import { useEffect } from "react";
 
 const Song = ({ song, handlePlay }) => {
   return (

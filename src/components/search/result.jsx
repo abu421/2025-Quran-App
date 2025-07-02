@@ -1,22 +1,21 @@
 import styles from "@/components/search/result.module.scss";
-import { useEffect } from "react";
 
 export default function Result({
   resultId,
   result,
   setSong,
-  toggleSearch,
+  handleToggleSearch,
   setText,
-  setRecentlyPlayed,
+  handleRecentlyPlayed,
 }) {
-  function changeSong() {
+  function handleChangeSong() {
     setSong(result);
-    setRecentlyPlayed({ id: result.id, title: result.title });
-    toggleSearch();
+    handleRecentlyPlayed({ id: result.id, title: result.title });
+    handleToggleSearch();
     setText("");
   }
   return (
-    <div className={styles.results} key={resultId} onClick={changeSong}>
+    <div className={styles.results} key={resultId} onClick={handleChangeSong}>
       <p>{result.title}</p>
     </div>
   );

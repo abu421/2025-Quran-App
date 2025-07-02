@@ -13,6 +13,13 @@ export default function Home() {
   const [song, setSong] = useState(data[0]);
   const [recently, setRecently] = useState([]);
 
+  useEffect(() => {
+    const retrievedRecent = localStorage.getItem("recentlyPlayed");
+    if (retrievedRecent !== null) {
+      setRecently(JSON.parse(retrievedRecent));
+    }
+  }, []);
+
   const handlePlay = async (e) => {
     try {
       await e.target.play();
@@ -21,55 +28,46 @@ export default function Home() {
     }
   };
 
-  function toggleSearch() {
+  function handleToggleSearch() {
     setSearch((prevSearch) => !prevSearch);
   }
 
-  function setRecentlyPlayed(obj) {
+  function handleRecentlyPlayed(songObj) {
     const surah = recently.find(
-      (item) => item.id === obj.id && item.title === obj.title
+      (item) => item.id === songObj.id && item.title === songObj.title
     );
-    if (surah === undefined) {
-      setRecently([...recently, obj].slice(-3));
-    } else {
-      return;
+    if (!surah) {
+      const retrievedRecent =
+        JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+      const surahArray = [...retrievedRecent, songObj].slice(-3);
+      console.log("surahArray", surahArray);
+      localStorage.setItem("recentlyPlayed", JSON.stringify(surahArray));
+      if (recently.length > 0) setRecently([...surahArray]);
     }
   }
 
-  useEffect(() => {
-    if (recently.length == 0) {
-      return;
-    }
-    localStorage.setItem("recentlyPlayed", JSON.stringify(recently));
-  }, [recently]);
-
-  useEffect(() => {
-    const retrievedRecent = localStorage.getItem("recentlyPlayed");
-    if (retrievedRecent !== null) {
-      setRecently(JSON.parse(retrievedRecent));
-    } else {
-      return;
-    }
-  }, []);
-
   return (
     <>
-      <Navbar toggleSearch={toggleSearch} />
+      <Navbar handleToggleSearch={handleToggleSearch} />
       <Search
         search={search}
-        toggleSearch={toggleSearch}
-        lists={data}
+        handleToggleSearch={handleToggleSearch}
+        Songlists={data}
         setSong={setSong}
-        setRecentlyPlayed={setRecentlyPlayed}
+        handleRecentlyPlayed={handleRecentlyPlayed}
       />
       <Song song={song} handlePlay={handlePlay} />
       {recently.length > 0 && (
-        <RecentlyPlayed lists={data} setSong={setSong} recently={recently} />
+        <RecentlyPlayed
+          Songlists={data}
+          setSong={setSong}
+          recently={recently}
+        />
       )}
       <AlbumList
-        lists={data}
+        Songlists={data}
         setSong={setSong}
-        setRecentlyPlayed={setRecentlyPlayed}
+        handleRecentlyPlayed={handleRecentlyPlayed}
       />
     </>
   );

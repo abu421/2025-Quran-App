@@ -19,3 +19,5 @@ Add searchbutton beside Header [DONE]
 Add autoplay when clicking on album or entering name in search bar
 Read useRef
 Read Keys
+
+react dropdown

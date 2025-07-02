@@ -1,12 +1,11 @@
 "use client";
 import styles from "@/components/navbar/navbar.module.scss";
 import React, { useState } from "react";
-import Image from "next/image";
 
-const Navbar = ({ toggleSearch }) => {
+const Navbar = ({ handleToggleSearch }) => {
   const [navbar, setNavbar] = useState(true);
 
-  function toggleNavbar() {
+  function handleToggleNavbar() {
     setNavbar((prevNav) => !prevNav);
   }
 
@@ -14,10 +13,10 @@ const Navbar = ({ toggleSearch }) => {
     <>
       <div className={styles.navbar_container}>
         <div className={styles.header}>
-          <img src="./burgerMenu.png" onClick={toggleNavbar}></img>
+          <img src="./burgerMenu.png" onClick={handleToggleNavbar}></img>
           <h3>Quran Player</h3>
           <svg
-            onClick={toggleSearch}
+            onClick={handleToggleSearch}
             xmlns="http://www.w3.org/2000/svg"
             width="30"
             height="30"
@@ -35,7 +34,7 @@ const Navbar = ({ toggleSearch }) => {
         </div>
         <div className={`${styles.lists} ${navbar ? styles.hidden : ""}`}>
           <div className={styles.logo}>
-            <img src="./music.png" onClick={toggleNavbar}></img>
+            <img src="./music.png" onClick={handleToggleNavbar}></img>
             <div>
               <h4>Quran Player</h4>
               <p>v1.0.0</p>

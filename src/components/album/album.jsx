@@ -1,13 +1,15 @@
 import styles from "@/components/album/album.module.scss";
 import { Heart, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Album({
   albumId,
-  list,
+  song,
   className,
   setSong,
-  setRecentlyPlayed,
+  handleRecentlyPlayed = null,
+  hideFav = null,
 }) {
   const [favorite, setFavorite] = useState(false);
 
@@ -20,12 +22,15 @@ export default function Album({
     }
   }, [albumId]);
 
-  function changeSong() {
-    setSong(list);
-    setRecentlyPlayed({ id: list.id, title: list.title });
+  function handleChangeSong() {
+    setSong(song);
+    console.log(song);
+    if (handleRecentlyPlayed !== null) {
+      handleRecentlyPlayed({ id: song.id, title: song.title });
+    }
   }
 
-  function addFavorite() {
+  function handleAddFavorite() {
     setFavorite((prevFavorite) => !prevFavorite);
     if (favorite) {
       localStorage.removeItem(albumId);
@@ -36,16 +41,18 @@ export default function Album({
 
   return (
     <div className={`${styles.album_container} ${className}`}>
-      <div className={styles.album__details} onClick={changeSong}>
-        <img src={list.image} />
+      <div className={styles.album__details} onClick={handleChangeSong}>
+        <img src={song.image} />
         <div className={styles.album_name}>
-          <h3>{list.title}</h3>
-          <p>{list.subtitle}</p>
+          <h3>{song.title}</h3>
+          <p>{song.subtitle}</p>
         </div>
       </div>
-      <div className={styles.album__action}>
+      <div
+        className={`${styles.album__action} ${hideFav === null ? "" : hideFav}`}
+      >
         <Heart
-          onClick={addFavorite}
+          onClick={handleAddFavorite}
           size="20"
           className={`${favorite ? styles.favorite : ""}`}
         />

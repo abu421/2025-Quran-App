@@ -31,3 +31,15 @@
         display: block;
     }
 }
+
+.album_wrapper {
+    margin-bottom: 15px;
+
+    @media(min-width: 768px){
+        margin-bottom: 30px;
+    }
+}
+
+.hide_favorite {
+    display: none !important;
+}

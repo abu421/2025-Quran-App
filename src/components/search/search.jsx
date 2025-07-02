@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 export default function Search({
   search,
-  toggleSearch,
-  lists,
+  handleToggleSearch,
+  Songlists,
   setSong,
-  setRecentlyPlayed,
+  handleRecentlyPlayed,
 }) {
   const [text, setText] = useState("");
   const [results, setResults] = useState([]);
@@ -18,13 +18,13 @@ export default function Search({
       return;
     }
 
-    const matchedData = lists.filter((list) =>
-      list.title.toLowerCase().includes(text.toLowerCase())
+    const matchedData = Songlists.filter((song) =>
+      song.title.toLowerCase().includes(text.toLowerCase())
     );
     setResults(matchedData);
-  }, [text, lists]);
+  }, [text, Songlists]);
 
-  function getText(e) {
+  function handleGetText(e) {
     setText(e.target.value);
   }
 
@@ -38,10 +38,10 @@ export default function Search({
           id="inputText"
           value={text}
           autoComplete="off"
-          onChange={getText}
+          onChange={handleGetText}
         />
         <svg
-          onClick={toggleSearch}
+          onClick={handleToggleSearch}
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
           y="0px"
@@ -59,9 +59,9 @@ export default function Search({
             resultId={result.id}
             result={result}
             setSong={setSong}
-            toggleSearch={toggleSearch}
+            handleToggleSearch={handleToggleSearch}
             setText={setText}
-            setRecentlyPlayed={setRecentlyPlayed}
+            handleRecentlyPlayed={handleRecentlyPlayed}
           />
         ))}
     </div>

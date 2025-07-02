@@ -1,42 +1,43 @@
 import styles from "@/components/recentlyPlayed/recentlyPlayed.module.scss";
 import { ArrowDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Album from "../album/album";
 
-const RecentlyPlayed = ({ lists, setSong, recently }) => {
+const RecentlyPlayed = ({ Songlists, setSong, recently }) => {
   const [showRecent, setShowRecent] = useState(false);
 
-  function showRecentPlayed() {
+  function handleToggleRecentPlayed() {
     setShowRecent((prevShowRecent) => !prevShowRecent);
   }
 
-  function playSong(e) {
-    const song = lists.find((list) => list.title === e.target.innerText);
-    // console.log(song);
-    setSong(song);
+  function handleReturnSong(item) {
+    const song = Songlists.find(
+      (list) => list.id === item.id && list.title === item.title
+    );
+    return song;
   }
 
   return (
     <div className={styles.recentlyContainer}>
       <div className={styles.header}>
         <h3>Recently Played</h3>
-        <ArrowDown size="30" onClick={showRecentPlayed} />
+        <ArrowDown size="30" onClick={handleToggleRecentPlayed} />
       </div>
       <div className={`${styles.songs} ${showRecent ? styles.show : ""}`}>
-        {/* <p className={styles.names} onClick={playSong}>
-          Surah Al-Fatiha
-        </p>
-        <p className={styles.names} onClick={playSong}>
-          Surah Al-Baqarah
-        </p>
-        <p className={styles.names} onClick={playSong}>
-          Surah Maryam
-        </p> */}
         {recently.length > 0 &&
-          recently.map((item) => (
-            <p className={styles.names} onClick={playSong} key={item.id}>
-              {item.title}
-            </p>
-          ))}
+          recently
+            .toReversed()
+            .map((item) => (
+              <Album
+                key={item.id}
+                albumId={item.id}
+                song={handleReturnSong(item)}
+                className={styles.album_wrapper}
+                setSong={setSong}
+                handleRecentlyPlayed={null}
+                hideFav={styles.hide_favorite}
+              />
+            ))}
       </div>
     </div>
   );
