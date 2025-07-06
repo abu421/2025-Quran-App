@@ -52,22 +52,26 @@ export default function Home() {
       <Search
         search={search}
         handleToggleSearch={handleToggleSearch}
-        Songlists={data}
+        songlists={data}
         setSong={setSong}
         handleRecentlyPlayed={handleRecentlyPlayed}
       />
       <Song song={song} handlePlay={handlePlay} />
       {recently.length > 0 && (
         <RecentlyPlayed
-          Songlists={data}
+          songlists={data}
           setSong={setSong}
           recently={recently}
+          hideControls={true}
         />
       )}
       <AlbumList
-        Songlists={data}
+        songlists={data}
         setSong={setSong}
         handleRecentlyPlayed={handleRecentlyPlayed}
+        title="All tracks"
+        genreOptions={["all", ...new Set(data.map((song) => song.genre))]}
+        artistOptions={["all", ...new Set(data.map((song) => song.artist))]}
       />
     </>
   );

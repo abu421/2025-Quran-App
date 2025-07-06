@@ -8,14 +8,14 @@ export default function Result({
   setText,
   handleRecentlyPlayed,
 }) {
-  function handleChangeSong() {
+  function handleSong() {
     setSong(result);
     handleRecentlyPlayed({ id: result.id, title: result.title });
     handleToggleSearch();
     setText("");
   }
   return (
-    <div className={styles.results} key={resultId} onClick={handleChangeSong}>
+    <div className={styles.results} key={resultId} onClick={handleSong}>
       <p>{result.title}</p>
     </div>
   );

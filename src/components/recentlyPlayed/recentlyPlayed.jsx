@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { useState } from "react";
 import Album from "../album/album";
 
-const RecentlyPlayed = ({ Songlists, setSong, recently }) => {
+const RecentlyPlayed = ({ songlists, setSong, recently, hideControls }) => {
   const [showRecent, setShowRecent] = useState(false);
 
   function handleToggleRecentPlayed() {
@@ -11,7 +11,7 @@ const RecentlyPlayed = ({ Songlists, setSong, recently }) => {
   }
 
   function handleReturnSong(item) {
-    const song = Songlists.find(
+    const song = songlists.find(
       (list) => list.id === item.id && list.title === item.title
     );
     return song;
@@ -34,8 +34,7 @@ const RecentlyPlayed = ({ Songlists, setSong, recently }) => {
                 song={handleReturnSong(item)}
                 className={styles.album_wrapper}
                 setSong={setSong}
-                handleRecentlyPlayed={null}
-                hideFav={styles.hide_favorite}
+                hideControls={hideControls}
               />
             ))}
       </div>

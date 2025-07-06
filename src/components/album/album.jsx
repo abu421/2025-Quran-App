@@ -8,8 +8,8 @@ export default function Album({
   song,
   className,
   setSong,
-  handleRecentlyPlayed = null,
-  hideFav = null,
+  handleRecentlyPlayed,
+  hideControls = false,
 }) {
   const [favorite, setFavorite] = useState(false);
 
@@ -25,7 +25,8 @@ export default function Album({
   function handleChangeSong() {
     setSong(song);
     console.log(song);
-    if (handleRecentlyPlayed !== null) {
+    console.log(handleRecentlyPlayed);
+    if (handleRecentlyPlayed) {
       handleRecentlyPlayed({ id: song.id, title: song.title });
     }
   }
@@ -48,16 +49,16 @@ export default function Album({
           <p>{song.subtitle}</p>
         </div>
       </div>
-      <div
-        className={`${styles.album__action} ${hideFav === null ? "" : hideFav}`}
-      >
-        <Heart
-          onClick={handleAddFavorite}
-          size="20"
-          className={`${favorite ? styles.favorite : ""}`}
-        />
-        <Plus size="20" className={styles.plus} />
-      </div>
+      {!hideControls && (
+        <div className={`${styles.album__action} `}>
+          <Heart
+            onClick={handleAddFavorite}
+            size="20"
+            className={`${favorite ? styles.favorite : ""}`}
+          />
+          <Plus size="20" className={styles.plus} />
+        </div>
+      )}
     </div>
   );
 }
