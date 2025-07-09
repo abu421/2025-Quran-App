@@ -12,7 +12,7 @@ const RecentlyPlayed = ({ songlists, setSong, recently, hideControls }) => {
 
   function handleReturnSong(item) {
     const song = songlists.find(
-      (list) => list.id === item.id && list.title === item.title
+      (list) => list.sys.id === item.id && list.title === item.title
     );
     return song;
   }

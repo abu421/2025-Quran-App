@@ -27,7 +27,7 @@ export default function Album({
     console.log(song);
     console.log(handleRecentlyPlayed);
     if (handleRecentlyPlayed) {
-      handleRecentlyPlayed({ id: song.id, title: song.title });
+      handleRecentlyPlayed({ id: song.sys.id, title: song.title });
     }
   }
 
@@ -43,7 +43,7 @@ export default function Album({
   return (
     <div className={`${styles.album_container} ${className}`}>
       <div className={styles.album__details} onClick={handleChangeSong}>
-        <img src={song.image} />
+        <img src={song.image.url} />
         <div className={styles.album_name}>
           <h3>{song.title}</h3>
           <p>{song.subtitle}</p>

@@ -109,10 +109,10 @@ export default function AlbumList({
         <button onClick={handleResetFilter}>Reset</button>
       </div>
       <div className={styles.AlbumContainer}>
-        {filteredSongs.map((song, index) => (
+        {filteredSongs.map((song) => (
           <Album
-            key={song.id}
-            albumId={song.id}
+            key={song.sys.id}
+            albumId={song.sys.id}
             song={song}
             className={styles.album_wrapper}
             setSong={setSong}
