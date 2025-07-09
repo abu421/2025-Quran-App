@@ -1,78 +1,34 @@
-"use client";
-import "@/styles/global.scss";
-import Navbar from "@/components/navbar/navbar";
-import Song from "@/components/song/song";
-import AlbumList from "@/components/albumList/albumList";
-import data from "@/data/albumList.json";
-import Search from "@/components/search/search";
-import RecentlyPlayed from "@/components/recentlyPlayed/recentlyPlayed";
-import { useEffect, useState } from "react";
+import Home from "./_components/home";
+import client from "../../lib/apolloClient";
+import { GET_ALBUMS } from "../../graphql/albumQueries";
+import { GET_GENRES } from "../../graphql/genreQueries";
+import { GET_ARTISTS } from "../../graphql/artistQueries";
 
-export default function Home() {
-  const [search, setSearch] = useState(true);
-  const [song, setSong] = useState(data[0]);
-  const [recently, setRecently] = useState([]);
+export default async function HomePage() {
+  // Using Contentful Delivery API Method
+  // const res = await fetch(
+  //   "https://cdn.contentful.com/spaces/gyka6fv3y24t/environments/master/entries?access_token=b7j9k2z5oyV2NDezpNZMv66S0K1vIz-pdi3ZaINjhjA&content_type=album"
+  // );
+  // const data1 = await res.json();
+  // const albums = data1.items.map((item) => item.fields);
+  // console.log(albums);
 
-  useEffect(() => {
-    const retrievedRecent = localStorage.getItem("recentlyPlayed");
-    if (retrievedRecent !== null) {
-      setRecently(JSON.parse(retrievedRecent));
-    }
-  }, []);
-
-  const handlePlay = async (e) => {
-    try {
-      await e.target.play();
-    } catch (ex) {
-      console.log(ex);
-    }
-  };
-
-  function handleToggleSearch() {
-    setSearch((prevSearch) => !prevSearch);
-  }
-
-  function handleRecentlyPlayed(songObj) {
-    const surah = recently.find(
-      (item) => item.id === songObj.id && item.title === songObj.title
-    );
-    if (!surah) {
-      const retrievedRecent =
-        JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-      const surahArray = [...retrievedRecent, songObj].slice(-3);
-      console.log("surahArray", surahArray);
-      localStorage.setItem("recentlyPlayed", JSON.stringify(surahArray));
-      if (recently.length > 0) setRecently([...surahArray]);
-    }
-  }
+  // Using graphql
+  const albumRes = await client.query({
+    query: GET_ALBUMS,
+  });
+  const genreRes = await client.query({
+    query: GET_GENRES,
+  });
+  const artistRes = await client.query({
+    query: GET_ARTISTS,
+  });
 
   return (
-    <>
-      <Navbar handleToggleSearch={handleToggleSearch} />
-      <Search
-        search={search}
-        handleToggleSearch={handleToggleSearch}
-        songlists={data}
-        setSong={setSong}
-        handleRecentlyPlayed={handleRecentlyPlayed}
-      />
-      <Song song={song} handlePlay={handlePlay} />
-      {recently.length > 0 && (
-        <RecentlyPlayed
-          songlists={data}
-          setSong={setSong}
-          recently={recently}
-          hideControls={true}
-        />
-      )}
-      <AlbumList
-        songlists={data}
-        setSong={setSong}
-        handleRecentlyPlayed={handleRecentlyPlayed}
-        title="All tracks"
-        genreOptions={["all", ...new Set(data.map((song) => song.genre))]}
-        artistOptions={["all", ...new Set(data.map((song) => song.artist))]}
-      />
-    </>
+    <Home
+      albums={albumRes.data.albumCollection.items}
+      genres={genreRes.data.genreCollection.items[0].options}
+      artists={artistRes.data.artistCollection.items[0].options}
+    />
   );
 }
