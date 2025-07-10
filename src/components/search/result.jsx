@@ -10,7 +10,7 @@ export default function Result({
 }) {
   function handleSong() {
     setSong(result);
-    handleRecentlyPlayed({ id: result.id, title: result.title });
+    handleRecentlyPlayed({ id: resultId, title: result.title });
     handleToggleSearch();
     setText("");
   }

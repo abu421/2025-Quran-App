@@ -55,8 +55,8 @@ export default function Search({
       {results.length > 0 &&
         results.map((result) => (
           <Result
-            key={result.id}
-            resultId={result.id}
+            key={result.sys.id}
+            resultId={result.sys.id}
             result={result}
             setSong={setSong}
             handleToggleSearch={handleToggleSearch}
