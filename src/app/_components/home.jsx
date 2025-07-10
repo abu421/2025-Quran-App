@@ -12,7 +12,6 @@ export default function Home({ albums, genres, artists }) {
   const [recently, setRecently] = useState([]);
 
   useEffect(() => {
-    console.log(genres);
     const retrievedRecent = localStorage.getItem("recentlyPlayed");
     if (retrievedRecent !== null) {
       setRecently(JSON.parse(retrievedRecent));
@@ -39,7 +38,6 @@ export default function Home({ albums, genres, artists }) {
       const retrievedRecent =
         JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
       const surahArray = [...retrievedRecent, songObj].slice(-3);
-      console.log("surahArray", surahArray);
       localStorage.setItem("recentlyPlayed", JSON.stringify(surahArray));
       if (recently.length > 0) setRecently([...surahArray]);
     }

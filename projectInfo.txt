@@ -16,8 +16,14 @@ Add searchbutton beside Header [DONE]
 - when we type, suggesstion(s) should appear (contains the words)
 - when we click on one item, the search should close and the video should play
 
-Add autoplay when clicking on album or entering name in search bar
+Add autoplay when clicking on album or entering name in search bar [DONE]
 Read useRef
 Read Keys
 
-react dropdown
+react dropdown [DONE]
+
+add promise to resolve all data 
+
+Pause and Play button
+
+Read documentation

@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import { ASSET_FRAGMENT } from "./fragments/AssetFragments";
 
 export const GET_ALBUMS = gql`
   query {
@@ -21,5 +20,4 @@ export const GET_ALBUMS = gql`
       }
     }
   }
-  ${ASSET_FRAGMENT}
 `;

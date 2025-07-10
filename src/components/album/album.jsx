@@ -24,8 +24,6 @@ export default function Album({
 
   function handleChangeSong() {
     setSong(song);
-    console.log(song);
-    console.log(handleRecentlyPlayed);
     if (handleRecentlyPlayed) {
       handleRecentlyPlayed({ id: song.sys.id, title: song.title });
     }
