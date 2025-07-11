@@ -10,6 +10,7 @@ export default function AlbumList({
   hideControls,
   genreOptions,
   artistOptions,
+  setSongIndex,
 }) {
   const [showFilter, setShowFilter] = useState(true);
   const [filteredSongs, setFilteredSongs] = useState([]);
@@ -109,8 +110,9 @@ export default function AlbumList({
         <button onClick={handleResetFilter}>Reset</button>
       </div>
       <div className={styles.AlbumContainer}>
-        {filteredSongs.map((song) => (
+        {filteredSongs.map((song, index) => (
           <Album
+            index={index}
             key={song.sys.id}
             albumId={song.sys.id}
             song={song}
@@ -118,6 +120,7 @@ export default function AlbumList({
             setSong={setSong}
             handleRecentlyPlayed={handleRecentlyPlayed}
             hideControls={hideControls}
+            setSongIndex={setSongIndex}
           />
         ))}
       </div>

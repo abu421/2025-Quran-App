@@ -1,16 +1,19 @@
 import styles from "@/components/search/result.module.scss";
 
 export default function Result({
+  index,
   resultId,
   result,
   setSong,
   handleToggleSearch,
   setText,
   handleRecentlyPlayed,
+  setSongIndex,
 }) {
   function handleSong() {
     setSong(result);
-    handleRecentlyPlayed({ id: resultId, title: result.title });
+    setSongIndex(index);
+    handleRecentlyPlayed({ index: index, id: resultId, title: result.title });
     handleToggleSearch();
     setText("");
   }

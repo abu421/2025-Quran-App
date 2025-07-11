@@ -1,9 +1,15 @@
 import styles from "@/components/recentlyPlayed/recentlyPlayed.module.scss";
 import { ArrowDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Album from "../album/album";
 
-const RecentlyPlayed = ({ songlists, setSong, recently, hideControls }) => {
+const RecentlyPlayed = ({
+  songlists,
+  setSong,
+  recently,
+  hideControls,
+  setSongIndex,
+}) => {
   const [showRecent, setShowRecent] = useState(false);
 
   function handleToggleRecentPlayed() {
@@ -29,12 +35,14 @@ const RecentlyPlayed = ({ songlists, setSong, recently, hideControls }) => {
             .toReversed()
             .map((item) => (
               <Album
+                index={item.index}
                 key={item.id}
                 albumId={item.id}
                 song={handleReturnSong(item)}
                 className={styles.album_wrapper}
                 setSong={setSong}
                 hideControls={hideControls}
+                setSongIndex={setSongIndex}
               />
             ))}
       </div>

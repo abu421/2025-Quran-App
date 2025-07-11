@@ -8,6 +8,7 @@ export default function Search({
   songlists,
   setSong,
   handleRecentlyPlayed,
+  setSongIndex,
 }) {
   const [text, setText] = useState("");
   const [results, setResults] = useState([]);
@@ -18,9 +19,11 @@ export default function Search({
       return;
     }
 
-    const matchedData = songlists.filter((song) =>
-      song.title.toLowerCase().includes(text.toLowerCase())
-    );
+    const matchedData = songlists
+      .map((song, index) => ({ index: index, songItem: song }))
+      .filter((song) =>
+        song.songItem.title.toLowerCase().includes(text.toLowerCase())
+      );
     setResults(matchedData);
   }, [text, songlists]);
 
@@ -55,13 +58,15 @@ export default function Search({
       {results.length > 0 &&
         results.map((result) => (
           <Result
-            key={result.sys.id}
-            resultId={result.sys.id}
-            result={result}
+            index={result.index}
+            key={result.songItem.sys.id}
+            resultId={result.songItem.sys.id}
+            result={result.songItem}
             setSong={setSong}
             handleToggleSearch={handleToggleSearch}
             setText={setText}
             handleRecentlyPlayed={handleRecentlyPlayed}
+            setSongIndex={setSongIndex}
           />
         ))}
     </div>

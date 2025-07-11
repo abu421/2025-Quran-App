@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Album({
+  index,
   albumId,
   song,
   className,
   setSong,
   handleRecentlyPlayed,
   hideControls = false,
+  setSongIndex,
 }) {
   const [favorite, setFavorite] = useState(false);
 
@@ -24,8 +26,13 @@ export default function Album({
 
   function handleChangeSong() {
     setSong(song);
+    setSongIndex(index);
     if (handleRecentlyPlayed) {
-      handleRecentlyPlayed({ id: song.sys.id, title: song.title });
+      handleRecentlyPlayed({
+        index: index,
+        id: song.sys.id,
+        title: song.title,
+      });
     }
   }
 
