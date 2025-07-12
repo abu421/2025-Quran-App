@@ -1,6 +1,6 @@
 .recentlyContainer{
     padding: 10px;
-    background-color: #f1e9f8;
+    background-color: #bfbdc157;
 
     .header{
         display: flex;
@@ -9,6 +9,11 @@
 
         h3{
             font-size: 20px;
+            margin: 10px 0;
+            font-family: sans-serif;
+            @media(min-width: 768px){
+                font-size: 30px;
+            }
         }
     }
 

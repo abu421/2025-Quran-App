@@ -73,7 +73,14 @@ export default function Home({ albums, genres, artists }) {
   }
 
   return (
-    <>
+    <div
+      style={{
+        maxWidth: "1400px",
+        margin: "0 auto",
+        backgroundColor: "white",
+        position: "relative",
+      }}
+    >
       <Navbar handleToggleSearch={handleToggleSearch} />
       <Search
         search={search}
@@ -97,11 +104,11 @@ export default function Home({ albums, genres, artists }) {
         songlists={albums}
         setSong={setSong}
         handleRecentlyPlayed={handleRecentlyPlayed}
-        title="All tracks"
-        genreOptions={["all", ...genres]}
-        artistOptions={["all", ...artists]}
+        title="All Tracks"
+        genreOptions={["All", ...genres]}
+        artistOptions={["All", ...artists]}
         setSongIndex={setSongIndex}
       />
-    </>
+    </div>
   );
 }

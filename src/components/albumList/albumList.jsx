@@ -36,8 +36,8 @@ export default function AlbumList({
 
   function handleFilterMatch(genre, artist) {
     return songlists.filter((song) => {
-      const matchGenre = genre === "all" || song.genre === genre;
-      const matchArtist = artist === "all" || song.artist === artist;
+      const matchGenre = genre === "All" || song.genre === genre;
+      const matchArtist = artist === "All" || song.artist === artist;
       return matchGenre && matchArtist;
     });
     // Simplified If-Else
@@ -54,8 +54,8 @@ export default function AlbumList({
 
   function handleResetFilter(e) {
     e.preventDefault();
-    genreRef.current.value = "all";
-    artistRef.current.value = "all";
+    genreRef.current.value = "All";
+    artistRef.current.value = "All";
     setFilteredSongs(songlists);
   }
 
@@ -82,32 +82,43 @@ export default function AlbumList({
         </svg>
       </div>
       <div className={`${styles.filters} ${showFilter ? styles.hidden : ""}`}>
-        <label>
-          Genre:
-          <select name="genre" id="genre" ref={genreRef}>
-            {genreOptions.map((genre, index) => {
-              return (
-                <option key={index} value={genre} id={index}>
-                  {genre}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-        <label>
-          Artist:
-          <select name="artist" id="artist" ref={artistRef}>
-            {artistOptions.map((artist, index) => {
-              return (
-                <option key={index} value={artist} id={index}>
-                  {artist}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-        <button onClick={handleFilter}>Apply Filter</button>
-        <button onClick={handleResetFilter}>Reset</button>
+        <div className={styles.dropdown}>
+          <label>
+            Genre:
+            <select
+              name="genre"
+              id="genre"
+              className={styles.genre}
+              ref={genreRef}
+            >
+              {genreOptions.map((genre, index) => {
+                return (
+                  <option key={index} value={genre} id={index}>
+                    {genre}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+          <label className={styles.artist}>
+            Artist:
+            <select name="artist" id="artist" ref={artistRef}>
+              {artistOptions.map((artist, index) => {
+                return (
+                  <option key={index} value={artist} id={index}>
+                    {artist}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </div>
+        <div className={styles.buttonss}>
+          <button onClick={handleFilter} className={styles.applyFilter}>
+            Apply Filter
+          </button>
+          <button onClick={handleResetFilter}>Reset</button>
+        </div>
       </div>
       <div className={styles.AlbumContainer}>
         {filteredSongs.map((song, index) => (

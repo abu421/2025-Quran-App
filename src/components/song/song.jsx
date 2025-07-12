@@ -85,7 +85,7 @@ const Song = ({ song, handleSkipSong }) => {
         onTimeUpdate={timeUpdateHandler}
         onLoadedData={handleOnLoadedData}
       ></audio>
-      <div>
+      <div className={styles.controls}>
         <div className={styles.progressBar}>
           <p className={styles.startingTime}>{progress}</p>
           <input

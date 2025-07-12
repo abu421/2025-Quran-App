@@ -2,7 +2,7 @@
     padding: 10px;
 
     .controls{
-        margin: 20px 0;
+        margin: 20px 0 5px;
         display: flex;
         justify-content: space-between;
 
@@ -14,7 +14,7 @@
             margin-right: 30px;
 
             @media(min-width: 768px){
-                font-size: 40px;
+                font-size: 30px;
                 margin-bottom: 25px;
             }
         }
@@ -23,39 +23,87 @@
     .filters {
         // height: 25vh;
         padding: 5px;
-        background-color: #f1e9f8;
+        background-color: #bfbdc157;
         margin-bottom: 15px;
-        position: relative;
-        // display: block;
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
+
+        .dropdown{
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+             select{
+                background-color: gainsboro;
+                padding: 5px;
+                font-size: 15px;
+                margin-left: 10px;
+
+                @media(min-width: 768px){
+                    font-size: 24px;
+                }
+            }
+
+            .genre{
+                margin-left: 7px;
+                width: 133px;
+            }
+        }
 
         label{
             font-size: 20px;
             margin-bottom: 15px;
-            
+
+            @media(min-width: 768px){
+                font-size: 32px;
+            }
+        }
+        label.artist{
+            margin-bottom: 0px;
+        }
+        
+       
+
+        .buttonss{
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+
+            button{
+                padding: 6px 10px;
+                font-size: 15px;
+                background-color: rgb(254, 255, 255);
+                border-radius: 5px;
+
+                @media(min-width: 768px){
+                    padding: 10px 15px;
+                    font-size: 20px;
+                }
+            }
+
+            .applyFilter{
+                margin-right: 10px;
+            }
         }
 
-        select{
-            margin-left: 20px;
-            background-color: gainsboro;
-            padding: 5px;
-            font-size: 15px;
-        }
+        // button{
+        //     position: absolute;
+        //     right: 5px;
+        //     padding: 5px 10px;
+        //     font-size: 15px;
+        // }
 
-        button{
-            position: absolute;
-            right: 5px;
-            padding: 10px 15px;
-            font-size: 15px;
-        }
-
-        button:last-child{
-            position: absolute;
-            top: 50px;
-            padding: 10px 33px;
-        }
+        // button:last-child{
+        //     position: absolute;
+        //     top: 50px;
+        //     padding: 5px 10px;
+        //     font-size: 15px;
+        // }
     }
 
     .hidden{
@@ -72,8 +120,5 @@
 
     .album_wrapper:last-child{
         margin-bottom: unset;
-    }
-
-    .AlbumContainer{
     }
 }
